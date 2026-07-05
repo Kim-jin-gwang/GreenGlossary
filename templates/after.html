@@ -1,0 +1,89 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Gowun+Dodum:400,700,800&amp;subset=korean" rel="stylesheet">
+    <style>
+        .original {
+            position: relative; 
+            top: 3%; 
+            left: 4%; 
+            border: 1px solid green;
+            padding:10px; 
+            float:left; 
+            width:38.5%; 
+            margin-left:3%; 
+            height: 67%; 
+            margin-top: 4%;
+            overflow: scroll;
+            border-radius:10px;
+            background-color: white;
+            font-family: "Gowun Dodum", sans-serif;
+            font-size: 15pt;
+        }
+        .result {
+            position: relative; 
+            top: 3%; 
+            right: 4%; 
+            border: 1px solid green;
+            padding:10px; 
+            float:left; 
+            width:38.5%;  
+            margin-left: 10%;
+            margin-right:3%; 
+            height: 67%;  
+            margin-top: 4%;
+            overflow: scroll;
+            border-radius:10px;
+            background-color: white;
+            font-family: "Gowun Dodum", sans-serif;
+            font-size: 15pt;
+        }
+        .original::-webkit-scrollbar {
+	        display:none /* Chrome , Safari , Opera */
+        }
+        .result::-webkit-scrollbar {
+	        display:none /* Chrome , Safari , Opera */
+        }  
+        input[type=submit]{
+            margin-top: 2%;
+            width: 14%;
+            height: 15%;
+            font-size: 20pt;
+            margin-left: 10%;
+            margin-right: 2%;
+            border-radius:10px;
+            background-color: white;
+            border: 1px solid Green;
+            font-family: "Gowun Dodum", sans-serif;
+        }
+        input[type=button]{
+            margin-top: 2%;
+            width: 14%;
+            height: 15%;
+            font-size: 20pt;
+            margin-right: 14%;
+            border-radius:10px;
+            background-color: GREEN;
+            border: 1px solid Green;
+            color: white;
+            font-weight: bold;
+            font-family: "Gowun Dodum", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="color: #3F3C3D;"> 🍏 GreenGlossary - Forestry and Agriculture Translation System </h1>
+    <hr style="border: solid 1px #E2FFE0;">
+    <center>
+        <form>
+            <div align="left" class="original">{{original}}</div>
+            <div align="left" class="result">{{result}}</div>
+            <br></br>
+            <input type="submit" , value='변환하기' disabled>
+            <input type="button" value="돌아가기" onClick="location.href='/'"> 
+        </form>
+    </center>
+
+</body>
+
+</html>
