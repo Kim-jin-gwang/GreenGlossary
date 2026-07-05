@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Gowun+Dodum:400,700,800&amp;subset=korean" rel="stylesheet">
+        <style>
+            .original {
+                position: relative; 
+                top: 3%; 
+                left: 4%; 
+                border: 1px solid green;
+                padding:10px; 
+                float:left; 
+                width:40%; 
+                margin-left:3%; 
+                height: 70%; 
+                margin-top: 4%;
+                overflow: scroll;
+                border-radius:10px;
+                -ms-overflow-style: none;
+                background-color: white;
+                font-family: "Gowun Dodum", sans-serif;
+                font-size: 15pt;
+            }
+            .result {
+                position: relative; 
+                top: 3%; 
+                right: 4%; 
+                border: 1px solid green;
+                padding:10px; 
+                float:left; 
+                width:40%; 
+                margin-left: 10%;
+                margin-right:3%; 
+                height: 70%; 
+                margin-top: 4%;
+                overflow: scroll;
+                border-radius:10px;
+                -ms-overflow-style: none;
+                background-color: white;
+                font-family: s"Gowun Dodum", sans-serif;
+                font-size: 15pt;
+            }
+            .original::-webkit-scrollbar {
+	        display:none /* Chrome , Safari , Opera */
+            }  
+            ::placeholder {
+                color: Gray;
+                font-size: 30px;
+                font-weight: 400;
+                font-family: "Gowun Dodum", sans-serif;
+            } 
+            .result::-webkit-scrollbar {
+                display:none /* Chrome , Safari , Opera */
+            }  
+            input[type=submit]{
+                border: 1px solid Green;
+                margin-top: 2%;
+                width: 14%;
+                height: 15%;
+                font-size: 20pt;
+                margin-left: 10%;
+                margin-right: 2%;
+                border-radius:10px;
+                background-color: GREEN;
+                color: white;
+                font-weight: bold;
+                font-family: "Gowun Dodum", sans-serif;
+            }
+            input[type=button]{
+                border: 1px solid Green;
+                margin-top: 2%;
+                width: 14%;
+                height: 15%;
+                font-size: 20pt;
+                margin-right: 14%;
+                border-radius:10px;
+                background-color: white;
+                font-family: "Gowun Dodum", sans-serif;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 style="color: #3F3C3D; "> 🍏 GreenGlossary - Forestry and Agriculture Translation System </h1>
+        <hr style="border: solid 1px #E2FFE0;">
+        <center>
+        <form method="POST", action="{{url_for('home')}}">
+           <textarea class="original", name='news_original', placeholder="Enter News"></textarea>
+           <textarea disabled class="result",  name='news_result', placeholder="Converted News"></textarea>
+           <br></br>
+           <input type="submit" , value='변환하기' >
+           <input type="button" , value='돌아가기' disabled>
+        </form>
+        </center>
+
+    </body>
+</html>
