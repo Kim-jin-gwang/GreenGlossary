@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# API Credentials (보안을 위해 실제 API 키 파일 제외)
+.env
+
+# Large Media & Archive Files (대용량 영상 및 백업 압축파일 제외)
+*.zip
+*.mp4
+*.mkv
+*.avi
+
+# Presentation & Documents (발표 자료 및 문서 대본 제외)
+*.pptx
+*.docx
+*.hwp
+*.pdf
+
+# Excel Files (보고서 엑셀은 제외하되, 서비스 동작에 필수인 사전 데이터는 포함)
+*.xlsx
+*.xls
+!data/agriculture_dictionary.xlsx
+
+# Deep Learning Model Weights (깃허브 용량 한계 초과 및 속도 저하 방지를 위해 제외)
+# 가중치 파일은 별도 클라우드 저장소나 LFS를 통해 관리하는 것이 권장됩니다.
+model/
