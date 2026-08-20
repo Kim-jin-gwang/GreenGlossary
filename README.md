@@ -1,18 +1,6 @@
----
-title: GreenGlossary
-emoji: 🌱
-colorFrom: green
-colorTo: blue
-sdk: gradio
-sdk_version: 6.25.0
-python_version: "3.11"
-app_file: demo_api.py
-pinned: false
----
-
 # 🌱 GreenGlossary — 농림 전문용어 순화 번역기
 
-> **🌐 Live Demo:** 준비 중 — 게이트웨이([demo-gateway.trealight112.workers.dev](https://demo-gateway.trealight112.workers.dev/))에서 곧 공개됩니다.  
+> **🌐 Live Demo:** **[demo-gateway.trealight112.workers.dev/greenglossary](https://demo-gateway.trealight112.workers.dev/greenglossary/)** — 문장을 직접 넣어 체험해보세요!  
 > **Project:** 상명대학교 캡스톤 디자인 (산림·농업 번역 시스템)  
 > **Revived & Refactored for Live Demo:** 2026.08.20
 
@@ -56,13 +44,13 @@ flowchart LR
 ## 🌐 라이브 데모 아키텍처
 
 ```text
-[커스텀 프론트엔드]                        [백엔드 API]
-Cloudflare (demo-gateway/greenglossary/) ──▶ Hugging Face Spaces (Gradio API)
-문장 입력·샘플 문장,                          demo_api.py — 순화 파이프라인 + KoBERT
-치환 용어 하이라이트/카드                     모델 4종 (Python 3.11 · TF 2.15)
+[커스텀 프론트엔드]                        [백엔드 API]                       [모델 저장소]
+Cloudflare                          ──▶ HF Space: kimjgwang/ml-demos  ──▶ HF Model: greenglossary-kobert
+demo-gateway/greenglossary/             /simplify API (Py 3.11·TF 2.15)    KoBERT SavedModel 4종 (1.3GB)
+문장 입력·용어 하이라이트/카드            Cafe-Focusing과 통합 호스팅          기동 시 snapshot_download
 ```
 
-- 모델 4종(문장 유사도 1 + 동음이의어 분류 3)은 TF2 SavedModel(약 1.3GB)로 git-lfs 관리
+- HF 무료 티어 제약(ZeroGPU Space 2개, Space 저장소 1GB)에 맞춰 **백엔드는 통합 Space**([kimjgwang/ml-demos](https://huggingface.co/spaces/kimjgwang/ml-demos))에서, **모델은 별도 Model 저장소**([kimjgwang/greenglossary-kobert](https://huggingface.co/kimjgwang/greenglossary-kobert))에서 제공
 - KoNLPy(Okt)의 JVM 의존성은 HF `packages.txt`(default-jre)로 해결
 
 ---
