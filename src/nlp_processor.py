@@ -84,6 +84,9 @@ class NLPProcessor:
 
         use_jargon = set()
         mor_sentences = []
+        # 공유 사전 객체를 직접 변경하면 이전 요청의 매칭 위치가 누적되므로
+        # (서버 환경에서 요청 간 상태 오염 버그) 요청별 매칭 결과를 새로 만든다.
+        matched = {}
 
         for i, sentence in enumerate(sentences):
             pos_tags = self.okt.pos(sentence)
@@ -91,11 +94,13 @@ class NLPProcessor:
 
             for j, (word, _) in enumerate(pos_tags):
                 if word in jargon_dict:
+                    if word not in matched:
+                        matched[word] = list(jargon_dict[word][:2])  # [std_name, mean_s]
                     # [sentence_idx, token_idx] 위치 기록
-                    jargon_dict[word].append([i, j])
+                    matched[word].append([i, j])
                     use_jargon.add(word)
 
-        return jargon_dict, use_jargon, mor_sentences
+        return matched, use_jargon, mor_sentences
 
     def replace_jargon(self, mor_sentences, use_jargon_dict, use_jargon_list, homonym_dict):
         """

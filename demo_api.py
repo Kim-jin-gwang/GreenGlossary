@@ -57,19 +57,20 @@ def simplify(text: str):
     )
     result_text = nlp_processor.select_best_sentences(std_news, mean_news, replaced_rows)
 
-    return {
-        "original": text,
-        "result": result_text,
-        "terms": [
-            {
-                "용어": t["jargon"],
-                "순화어": t["std"],
-                "설명": t["mean"],
-                "동음이의어판별": t["homonym_checked"],
-            }
-            for t in replaced_terms
-        ],
-    }
+    seen = set()
+    terms = []
+    for t in replaced_terms:
+        if t["jargon"] in seen:
+            continue
+        seen.add(t["jargon"])
+        terms.append({
+            "용어": t["jargon"],
+            "순화어": t["std"],
+            "설명": t["mean"],
+            "동음이의어판별": t["homonym_checked"],
+        })
+
+    return {"original": text, "result": result_text, "terms": terms}
 
 
 with gr.Blocks(title="GreenGlossary API") as demo:
