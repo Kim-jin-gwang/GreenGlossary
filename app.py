@@ -40,15 +40,15 @@ def process_text():
     )
     print(f'[INFO] Dictionary Matching Complete. Matched: {use_jargon_list}')
 
-    # 4. 전문용어 치환 (동음이의어 검증 포함)
-    std_news, mean_news, replaced_rows = nlp_processor.replace_jargon(
+    # 4. 전문용어 치환 (동음이의어 검증 + 조사 교정 포함)
+    std_news, mean_news, replaced_rows, replaced_terms = nlp_processor.replace_jargon(
         mor_sentences, matched_dict, use_jargon_list, homonym_dict
     )
-    print(f'[INFO] Jargon Replacement Complete. Replaced rows: {replaced_rows}')
+    print(f'[INFO] Jargon Replacement Complete. Replaced: {replaced_terms}')
 
-    # 5. 역번역 및 문장 유사도 비교를 통해 최적의 텍스트 선택
-    result_text = nlp_processor.select_and_translate_news(std_news, mean_news, replaced_rows)
-    print('[INFO] Translation & Similarity Selection Complete.')
+    # 5. 문장 유사도 비교를 통해 최적의 텍스트 선택
+    result_text = nlp_processor.select_best_sentences(std_news, mean_news, replaced_rows)
+    print('[INFO] Similarity Selection Complete.')
 
     return render_template('after.html', result=result_text, original=text_original)
 
