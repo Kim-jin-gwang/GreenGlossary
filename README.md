@@ -62,7 +62,8 @@ GreenGlossary/
 ├── demo_api.py             # 라이브 데모용 Gradio API 서버 (HF Spaces 진입점)
 ├── app.py / server.py      # Flask 웹앱 (로컬 실행용)
 ├── config.py               # 모델/데이터 경로 설정
-├── download_models.py      # KoBERT 모델 다운로드 스크립트 (Google Drive)
+├── download_models.py      # KoBERT 모델 다운로드 스크립트 (HF Hub)
+├── Dockerfile              # 도커 이미지 (py3.11 + TF 2.15 + JRE, 모델 자동 다운로드)
 ├── requirements.txt        # 의존성 (TF 2.15 고정 — SavedModel 호환)
 ├── packages.txt            # HF Spaces 시스템 패키지 (JVM)
 ├── data/
