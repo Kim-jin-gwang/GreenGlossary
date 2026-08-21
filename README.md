@@ -79,14 +79,23 @@ GreenGlossary/
 
 ## 🛠️ 실행 방법
 
+### 도커로 실행 (권장 — Windows에서도 모델 추론 가능)
+`tensorflow-text`가 Windows 휠을 제공하지 않아 로컬 추론이 불가능했던 문제를 Linux 컨테이너로 해결합니다. KoBERT 모델(~1.3GB)은 기동 시 HF 모델 저장소에서 자동 다운로드됩니다.
+```bash
+docker build -t greenglossary .
+docker run -p 5000:5000 greenglossary
+```
+→ http://localhost:5000 에서 Flask 웹앱이 열립니다.
+
+### 직접 실행 (Linux)
 ```bash
 pip install -r requirements.txt   # Linux 기준 (tensorflow-text는 Windows 미지원)
-python download_models.py         # KoBERT 모델 다운로드 (~1.2GB)
+python download_models.py         # KoBERT 모델 다운로드 (~1.3GB, HF Hub)
 python demo_api.py                # Gradio API/UI — http://localhost:7860
 # 또는 Flask 웹앱: python server.py — http://localhost:5000
 ```
 
-> Windows에서는 `tensorflow-text` 휠이 제공되지 않아 모델 추론이 불가합니다.
+> Windows에서 직접 실행 시에는 `tensorflow-text` 휠이 없어 모델 추론이 불가합니다 — 위의 도커 방식을 사용하세요.
 > 사전 매칭·조사 교정 로직은 모델 없이도 동작합니다 (`konlpy`, `pandas`, `openpyxl`만 설치).
 
 ---
